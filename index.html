@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PurpleVideoStore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        :root {
+            --primary-color: #6a1b9a;
+            --secondary-color: #9c27b0;
+            --dark-purple: #4a148c;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f3e5f5;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .content-area {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .thumbnail-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            background: white;
+        }
+
+        .thumbnail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .thumbnail-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .thumbnail-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .price-tag {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background-color: var(--dark-purple);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        @media (max-width: 1024px) {
+            .content-area {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav.active ul {
+                display: flex;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                order: 2;
+            }
+
+            .content-area {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-area {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">PurpleVideo</div>
+            <button class="menu-toggle">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="content-area">
+            <!-- Paste your 6 thumbnail links here -->
+            <div class="thumbnail-card">
+                <div class="thumbnail-container">
+                    <img src="https://via.placeholder.com/400x300" alt="Video 1" class="thumbnail-img">
+                </div>
+                <div class="video-info">
+                    <h3>Video Title 1</h3>
+                    <div class="price-tag">$19.99</div>
+                </div>
+            </div>
+            <!-- Repeat similar blocks for 6 thumbnails -->
+            <!-- Example thumbnail 2 -->
+            <div class="thumbnail-card">
+                <div class="thumbnail-container">
+                    <img src="https://via.placeholder.com/400x300" alt="Video 2" class="thumbnail-img">
+                </div>
+                <div class="video-info">
+                    <h3>Video Title 2</h3>
+                    <div class="price-tag">$24.99</div>
+                </div>
+            </div>
+            <!-- Add 4 more thumbnail cards following the same structure -->
+        </main>
+
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul>
+                <li>Movies</li>
+                <li>TV Shows</li>
+                <li>Documentaries</li>
+                <li>Special Content</li>
+                <li>Live Events</li>
+                <li>Exclusive</li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 PurpleVideo. All rights reserved.</p>
+        <p>Secure payments | 24/7 Support</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
